@@ -1,9 +1,16 @@
-import './App.css'
+import Header from "./components/Header"
+import Form from "./components/Form"
+import PacientList from "./components/PacientList"
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <h2>hello</h2>
+    <div className="container mx-auto mt-10">
+      <Header />
+      <div className="mt-12 md:flex">
+        <Form />
+        <PacientList />
+      </div>
+     
     </div>
   )
 }
