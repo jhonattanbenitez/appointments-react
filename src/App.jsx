@@ -1,6 +1,6 @@
 import Header from "./components/Header"
 import Form from "./components/Form"
-import PacientList from "./components/PacientList"
+import PatientList from "./components/PatientList"
 
 const App = () => {
   return (
@@ -8,7 +8,7 @@ const App = () => {
       <Header />
       <div className="mt-12 md:flex">
         <Form />
-        <PacientList />
+        <PatientList />
       </div>
      
     </div>
