@@ -1,4 +1,5 @@
-import {useState, useEffect} from 'react'
+import {useState, useEffect} from 'react';
+import Error from './error';
 
 const Form = ({patients, setPatients}) => {
   const [name, setName] = useState('')
@@ -7,6 +8,13 @@ const Form = ({patients, setPatients}) => {
   const [date, setDate] = useState('')
   const [symptoms, setSymptoms] = useState('')
   const [error, setError] = useState(false)
+
+  const idGenerator = () => {
+    const date = Date.now().toString(36);
+    const random = Math.random().toString(36).substring(2);
+
+    return date + random;
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -24,10 +32,16 @@ const Form = ({patients, setPatients}) => {
       owner, 
       email, 
       date, 
-      symptoms
+      symptoms,
+      id: idGenerator()
     }
 
     setPatients([...patients, objPatient])
+    setName('')
+    setOwner('')
+    setEmail('')
+    setDate('')
+    setSymptoms('')
   }
 
   return (
@@ -35,7 +49,7 @@ const Form = ({patients, setPatients}) => {
         <h2 className="font-black text-3xl text-center">Patients Follow up</h2>
         <p className='text-center mt-5 mb-10'>Add patient and {' '} <span className="text-indigo-600 font-bold">admisions</span></p>
         <form action="" className="bg-white shadow-md rounded py-10 px-5 mb-10 mx-5" onSubmit={handleSubmit}>
-            {error && <div><p className='text-red-600 text-center font-bold'>Please complete all the fields</p></div>}
+            {error && <Error message="Please complete all the fields"/>}
             <div className='my-5'>
               <label htmlFor="pet" className='block text-gray-700'>Pet's Name</label>
               <input 
