@@ -1,8 +1,8 @@
 import React from 'react';
 import Patient from './Patient';
 
+export default function PatientList({patients}) {
 
-export default function PatientList() {
   return (
     <div className="md:w-1/2 lg:w-3/5 md:h-screen overflow-y-scroll">
       <h2 className="font-black text-3xl text-center">Patient List</h2>
@@ -12,9 +12,15 @@ export default function PatientList() {
           Patients and appoinments
         </span>
       </p>
-      <Patient />
-      <Patient />
-      <Patient />
+      {patients.map((patient) => {
+        
+         return(
+          <Patient 
+            patient={patient}
+            key={patient.id}
+          />
+        )
+      })}    
     </div>
   );
 }
