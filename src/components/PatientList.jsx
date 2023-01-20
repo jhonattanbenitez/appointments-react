@@ -1,12 +1,7 @@
-import {React, useEffect} from 'react';
+import {React} from 'react';
 import Patient from './Patient';
 
-export default function PatientList({ patients, setPatient }) {
-  useEffect(() => {
-    if(patients.length > 0 ) {
-      console.log('nuevo paciente')
-    }
-  }, [patients])
+export default function PatientList({ patients, setPatient, deletePatient }) {
   return (
     <div className="md:w-1/2 lg:w-3/5 md:h-screen overflow-y-scroll">
       {patients && patients.length ? (
@@ -19,7 +14,7 @@ export default function PatientList({ patients, setPatient }) {
             </span>
           </p>
           {patients.map((patient) => {
-            return <Patient patient={patient} key={patient.id} setPatient={setPatient}/>;
+            return <Patient patient={patient} key={patient.id} setPatient={setPatient} deletePatient={deletePatient}/>;
           })}
         </>
       ) : (
